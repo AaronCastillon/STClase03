@@ -1,0 +1,56 @@
+---
+title: "Introduccion"
+format: html
+editor: visual
+---
+
+## pkgs
+
+CTRL/CMD + ALT + I
+
+# para correr todo un chunck con 
+# CTRL/CMD + SHIFT + ENTER
+
+```{r}
+library(tidyverse)
+library(fpp3)
+```
+
+
+## Turismo
+
+```{r}
+mpg
+tourism
+```
+
+```{r}
+distinct(filter(tourism, State == "Victoria"), Region == "Lakes")
+```
+
+```{r}
+summarise(group_by(as_tibble(filter(tourism, State == "Victoria", Region == "Lakes")), Purpose), media = mean(Trips)) 
+```
+
+```{r}
+tourism |> 
+  filter(State == "Victoria", Region == "Lakes") |> 
+  as_tibble() |> 
+  group_by(Purpose) |> 
+  summarise(media = mean(Trips))
+```
+
+```{r}
+tourism |> 
+  filter(State == "Victoria", Region == "Lakes") |> 
+  autoplot(Trips) +
+  facet_wrap(vars(Purpose), scale = "free_y") + 
+  theme(legend.position = "none")
+```
+#CTRL + SHIFT + M |> 
+
+```{r}
+tourism |> 
+  filter(State == "Victoria", Region == "Lakes") |>
+```
+
